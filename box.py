@@ -8,7 +8,7 @@ import random
 
 win = visual.Window([1400,900], color='white', fullscr=0)
 mymouse = event.Mouse(visible=True, win=win)
-#hi
+
 # basic text
 ready_text = visual.TextStim(win, text='hello world!', color='black')
 # drawing draws "behind the screen"
