@@ -25,6 +25,7 @@ correct_color_order = ['#E85440', '#EC743C', '#F3953F', '#F4B63D', '#FAD440']
 shuffled_colors = correct_color_order.copy()
 random.shuffle(shuffled_colors)
 
+# position rn is based on screen being -1 to 1 on each axis - you should change the units to pixels to be more precise
 tiles = []
 for i in range(len(correct_color_order)):
     newtile = visual.Rect(win,pos=((-.5+(i*.2)),.5),fillColor=shuffled_colors[i],width=.2,height=.2,fillColorSpace='hex')
@@ -65,8 +66,6 @@ for i in range(len(puzzlekey)):
     is_correct = sum(is_correct)
     if is_correct==3:
         total_correct += 1
-
-
 
 
 
