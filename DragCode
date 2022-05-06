@@ -1,0 +1,50 @@
+from psychopy import visual, monitors
+from psychopy.visual import Window
+from psychopy import core, event
+import csv
+import numpy as np
+import pandas as pd
+import psychopy.event
+
+win = visual.Window([1440,900], color='black', fullscr=0,units='pix',)
+
+mouse = event.Mouse(visible=True, win = win)
+
+square1 = visual.Rect(win, units='pix', pos=(200,200), fillColor='#EED938', lineColor='#EED938', width=100, height=100, fillColorSpace='rgb255', lineColorSpace='rgb255')
+
+square2 = visual.Rect(win, units='pix', pos=(200,100), fillColor='#FAD440', lineColor='#FAD440', width=100, height=100, fillColorSpace='rgb255', lineColorSpace='rgb255')
+
+
+square1.draw()
+square2.draw()
+
+# Begin Experiment
+def movePicked(picked, mouse, grabbed):
+    # Move piece if we already moving that piece
+
+    if grabbed is not None and mouse.isPressedIn(grabbed): # if the shape has been clicked AND the mouse clicked happened within the shape
+        grabbed.pos = mouse.getPos() #position of the mouse is the position of the shape
+        return grabbed # keep this
+    else:
+        # Move newly clicked piece
+        for piece in picked: # for each shape that is clicked...
+            if mouse.isPressedIn(piece) and grabbed is None: #if the mouse is in the piece that is clicked
+                return piece
+
+# Begin Routine
+pieces = [square1, square2] #define the draggable pieces
+picked = [] # initially, no shape has been clicked. This defines the draggable piece
+movingPiece = None # there is no piece being dragged
+
+timer = core.CountdownTimer(5) # Initiallise timer for dragging task
+while timer.getTime() > 0:
+	win.flip()	# Window will keep flipping for the duration of the timer. Because evertime something moves on the window, the window must be flipped.
+	for piece in pieces: #for each shape
+	    if mouse.isPressedIn(piece) and movingPiece is None: # If the shape is clicked AND it's not moving
+	        picked.append(piece) # define it as a picked. So now piece is picked
+	movingPiece = movePicked(picked, mouse, movingPiece) # move the picked piece
+	for p in pieces:
+		p.draw() #keep drawing the shape in their new position shape.
+
+win.flip()
+win.close()
