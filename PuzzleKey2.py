@@ -8,7 +8,7 @@ import random
 
 win = visual.Window([1400,900], color='white', fullscr=0)
 mymouse = event.Mouse(visible=True, win=win)
-#hi
+
 # basic text
 ready_text = visual.TextStim(win, text='hello world!', color='black')
 # drawing draws "behind the screen"
@@ -43,7 +43,7 @@ for pk in puzzlekey:
     pk.draw()
 
 check_button = visual.Rect(win,pos=(0,-.5),fillColor='black',width=.2,height=.2)
-check_buttontext = visual.TextStim(win, text='Check', font='Arial',pos=(0,-.5), height=.08, color='white')
+check_buttontext = visual.TextStim(win, text='Check', font='Times',pos=(0,-.5), height=.08, color='white')
 check_button.draw()
 check_buttontext.draw()
 
