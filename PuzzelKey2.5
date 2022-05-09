@@ -1,0 +1,98 @@
+from psychopy import visual, monitors
+from psychopy.visual import Window
+from psychopy import core, event
+import csv
+import numpy as np
+import pandas as pd
+import random
+
+def movePicked(picked, mouse, grabbed):
+    # Move piece if we already moving that piece
+
+    if grabbed is not None and mouse.isPressedIn(grabbed): # if the shape has been clicked AND the mouse clicked happened within the shape
+        grabbed.pos = mouse.getPos() #position of the mouse is the position of the shape
+        return grabbed # keep this
+    else:
+        # Move newly clicked piece
+        for piece in picked: # for each shape that is clicked...
+            if mouse.isPressedIn(piece) and grabbed is None: #if the mouse is in the piece that is clicked
+                return piece
+
+win = visual.Window([1400,900], color='white', fullscr=0)
+mouse = event.Mouse(visible=True, win=win)
+
+# basic text
+ready_text = visual.TextStim(win, text='hello world!', color='black')
+# drawing draws "behind the screen"
+ready_text.draw()
+# flipping the window is how to show things - you can get whatever ready you want in the background in the mean time
+win.flip()
+event.waitKeys(maxWait=3, keyList=['1', '2'], clearEvents=True,)
+win.flip()
+
+
+correct_color_order = ["#EED938","#FAD440", "#F4B63D"]
+shuffled_colors = correct_color_order.copy()
+random.shuffle(shuffled_colors)
+
+tiles = []
+for i in range(len(correct_color_order)):
+    newtile = visual.Rect(win,pos=((-.5+(i*.2)),.5),fillColor=shuffled_colors[i],width=.2,height=.2,fillColorSpace='hex')
+    print(newtile.fillColor)
+    tiles.append(newtile)
+for t in tiles:
+    t.draw()
+
+
+
+init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF"]
+
+puzzlekey = []
+for i in range(len(init_colors)):
+    newkey = visual.Rect(win,pos=((-.5+(i*.2)),0),lineWidth=1, lineColor='black',fillColor=init_colors[i], width=.2,height=.2,fillColorSpace='hex')
+    puzzlekey.append(newkey)
+for pk in puzzlekey:
+    pk.draw()
+
+check_button = visual.Rect(win,pos=(0,-.5),fillColor='black',width=.2,height=.2)
+check_buttontext = visual.TextStim(win, text='Check', font='Times',pos=(0,-.5), height=.08, color='white')
+check_button.draw()
+check_buttontext.draw()
+
+pieces = tiles #define the draggable pieces
+picked = [] # initially, no shape has been clicked. This defines the draggable piece
+movingPiece = None # there is no piece being dragged
+
+clicked_check = False
+while not clicked_check:
+    win.flip()# Window will keep flipping for the duration of the timer. Because evertime something moves on the window, the window must be flipped.
+    if mouse.isPressedIn(check_button):
+        clicked_check = True
+    for piece in pieces: #for each shape
+        if mouse.isPressedIn(piece) and movingPiece is None: # If the shape is clicked AND it's not moving
+            picked.append(piece) # define it as a picked. So now piece is picked
+    movingPiece = movePicked(picked, mouse, movingPiece) # move the picked piece
+    for pk in puzzlekey:# want to keep drawing the puzzel keys so that it displays up until the check button is clicked
+        pk.draw()
+    for p in pieces:
+        p.draw() #keep drawing the shape in their new position shape.
+    check_button.draw()
+    check_buttontext.draw()
+
+win.flip()
+
+total_correct = 0
+for i in range(len(puzzlekey)):
+    puzzletile = puzzlekey[i]
+    correct_color = correct_color_order[i]
+    is_correct = puzzletile.fillColor == correct_color
+    is_correct = sum(is_correct)
+    if is_correct==3:
+        total_correct += 1
+
+
+result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!')
+result.draw()
+win.flip()
+event.waitKeys(maxWait=3, keyList=['space'], clearEvents=True,)
+core.quit()
