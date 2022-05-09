@@ -9,17 +9,19 @@ import random
 win = visual.Window([1400,900], color='white', fullscr=0)
 mymouse = event.Mouse(visible=True, win=win)
 
-# basic text
-ready_text = visual.TextStim(win, text='hello world!', color='black')
-# drawing draws "behind the screen"
-ready_text.draw()
-# flipping the window is how to show things - you can get whatever ready you want in the background in the mean time
+Introtxt = visual.TextStim(win, text='CLPS950 Final Project', font='Times', units='pix', pos=(0,100), height=65, color="#000000")
+subIntrotxt = visual.TextStim(win, text='by Shay, Monica, and Eden', font='Times', units='pix', pos=(0,-100), height=45, color="#000000")
+subsubIntrotxt = visual.TextStim(win, text='press space bar to continue', font='Times', units='pix', pos=(0,-165), height=30, color="#000000")
+Introtxt.draw()
+subIntrotxt.draw()
+subsubIntrotxt.draw()
+
 win.flip()
-event.waitKeys(maxWait=3, keyList=['1', '2'], clearEvents=True,)
+event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
 win.flip()
 
 
-correct_color_order = ["#EED938","#FAD440", "#F4B63D"]
+correct_color_order = ["#EED938","#FAD440", "#F4B63D", "#F3953F", "#EC743C", "#E85440"]
 shuffled_colors = correct_color_order.copy()
 random.shuffle(shuffled_colors)
 
@@ -33,7 +35,7 @@ for t in tiles:
 
 
 
-init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF"]
+init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"]
 
 puzzlekey = []
 for i in range(len(init_colors)):
