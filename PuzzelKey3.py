@@ -39,7 +39,7 @@ random.shuffle(shuffled_colors)
 
 tiles = []
 for i in range(len(correct_color_order)):
-    newtile = visual.Rect(win,units='pix',pos=((-350+(i*140)),150),fillColor=shuffled_colors[i],width=140,height=90,fillColorSpace='hex')
+    newtile = visual.Rect(win,units='pix',pos=((-280+(i*140)),150),fillColor=shuffled_colors[i],width=140,height=90,fillColorSpace='hex')
     print(newtile.fillColor)
     tiles.append(newtile)
 for t in tiles:
@@ -50,13 +50,13 @@ init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"]
 
 puzzlekey = []
 for i in range(len(init_colors)):
-    newkey = visual.Rect(win,units='pix',pos=((-490+(i*140)),0),lineWidth=1, lineColor="#000000",fillColor=init_colors[i], width=140,height=90,fillColorSpace='hex')
+    newkey = visual.Rect(win,units='pix',pos=((-280+(i*140)),0),lineWidth=1, lineColor="#000000",fillColor=init_colors[i], width=140,height=90,fillColorSpace='hex')
     puzzlekey.append(newkey)
 for pk in puzzlekey:
     pk.draw()
 
-referent1 = visual.Rect(win, units='pix', pos=(-490, 0),lineWidth=1, lineColor="#000000",fillColor="#EED938", width=140,height=90,fillColorSpace='hex')
-referent2 = visual.Rect(win, units='pix', pos=(350, 0),lineWidth=1, lineColor="#000000",fillColor="#E85440", width=140,height=90,fillColorSpace='hex')
+referent1 = visual.Rect(win, units='pix', pos=(-420, 0),lineWidth=1, lineColor="#000000",fillColor="#EED938", width=140,height=90,fillColorSpace='hex')
+referent2 = visual.Rect(win, units='pix', pos=(420, 0),lineWidth=1, lineColor="#000000",fillColor="#E85440", width=140,height=90,fillColorSpace='hex')
 referent1.draw()
 referent2.draw()
 
