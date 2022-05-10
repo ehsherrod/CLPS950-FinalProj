@@ -21,19 +21,17 @@ def movePicked(picked, mouse, grabbed):
 win = visual.Window([1400,900], color='white', fullscr=0)
 mouse = event.Mouse(visible=True, win=win)
 
-Introtxt = visual.TextStim(win, text='CLPS950 Final Project', font='Times', units='pix', pos=(0,100), height=65, color="#000000")
-subIntrotxt = visual.TextStim(win, text='by Shay, Monica, and Eden', font='Times', units='pix', pos=(0,-100), height=45, color="#000000")
-subsubIntrotxt = visual.TextStim(win, text='press space bar to continue', font='Times', units='pix', pos=(0,-165), height=30, color="#000000")
-Introtxt.draw()
-subIntrotxt.draw()
-subsubIntrotxt.draw()
-
+# basic text
+ready_text = visual.TextStim(win, text='hello world!', color='black')
+# drawing draws "behind the screen"
+ready_text.draw()
+# flipping the window is how to show things - you can get whatever ready you want in the background in the mean time
 win.flip()
-event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
+event.waitKeys(maxWait=3, keyList=['1', '2'], clearEvents=True,)
 win.flip()
 
 
-correct_color_order = ["#EED938","#FAD440", "#F4B63D", "#F3953F", "#EC743C", "#E85440"]
+correct_color_order = ["#EED938","#FAD440", "#F4B63D"]
 shuffled_colors = correct_color_order.copy()
 random.shuffle(shuffled_colors)
 
@@ -42,12 +40,12 @@ for i in range(len(correct_color_order)):
     newtile = visual.Rect(win,pos=((-.5+(i*.2)),.5),fillColor=shuffled_colors[i],width=.2,height=.2,fillColorSpace='hex')
     print(newtile.fillColor)
     tiles.append(newtile)
-for t in tiles:
+for t in tiles:,K
     t.draw()
 
 
 
-init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"]
+init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF"]
 
 puzzlekey = []
 for i in range(len(init_colors)):
@@ -88,19 +86,11 @@ for i in range(len(puzzlekey)):
     puzzletile = puzzlekey[i]
     correct_color = correct_color_order[i]
     is_correct = puzzletile.fillColor == correct_color
-    is_correct = sum(is_correct)
-    if is_correct==3:
+    if is_correct:
         total_correct += 1
-
-
-
-
 
 result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!')
 result.draw()
 win.flip()
 event.waitKeys(maxWait=3, keyList=['space'], clearEvents=True,)
-
-
-
 core.quit()
