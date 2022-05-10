@@ -95,14 +95,9 @@ for i in range(len(puzzlekey)):
         total_correct += 1
 
 
-
-
-
 result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!')
 result.draw()
 win.flip()
 event.waitKeys(maxWait=3, keyList=['space'], clearEvents=True,)
-
-
 
 core.quit()
