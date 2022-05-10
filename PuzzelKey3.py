@@ -45,12 +45,9 @@ for i in range(len(correct_color_order)):
 for t in tiles:
     t.draw()
 
-
-init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"]
-
 puzzlekey = []
-for i in range(len(init_colors)):
-    newkey = visual.Rect(win,units='pix',pos=((-280+(i*140)),0),lineWidth=1, lineColor="#000000",fillColor=init_colors[i], width=140,height=90,fillColorSpace='hex')
+for i in range(5):
+    newkey = visual.Rect(win,units='pix',pos=((-280+(i*140)),0),lineWidth=1, lineColor="#000000",fillColor="#FFFFFF", width=140,height=90,fillColorSpace='hex')
     puzzlekey.append(newkey)
 for pk in puzzlekey:
     pk.draw()
