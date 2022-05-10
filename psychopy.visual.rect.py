@@ -24,7 +24,7 @@ for ii in range(n_rect):
     rect.width = 50
     rect.height = 100
     rect.fillColor = rect_colors_1[ii]
-    rect.pos = [50*ii, 0]
+    rect.pos = [-100+(50*ii), 0]
     rect.draw()
 
 win.flip()
