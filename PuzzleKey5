@@ -27,7 +27,14 @@ subsubIntrotxt = visual.TextStim(win, text='press space bar to continue', font='
 Introtxt.draw()
 subIntrotxt.draw()
 subsubIntrotxt.draw()
+win.flip()
+event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
+win.flip()
 
+Instr_title = visual.TextStim(win, text='HUE: Color Sorting Game', font='Times', units='pix', pos=(0,100), height=65, color="#000000")
+Instr_text = visual.TextStim(win, text="For each trial, sort the colors according to their hues, using the reference blocks provided.", font='Times', units='pix', pos=(0,-100), height=35, color="#000000")
+Instr_title.draw()
+Instr_text.draw()
 win.flip()
 event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
 win.flip()
@@ -128,5 +135,11 @@ for trial in range(4):
     result.draw()
     win.flip()
     event.waitKeys( keyList=['space'], clearEvents=True,)
+
+End_text = visual.TextStim(win, text='Thanks for playing! Good-bye :)', font='Times', units='pix', pos=(0,0), height=50, color="#000000")
+End_text.draw()
+win.flip()
+event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
+win.flip()
 
 core.quit()
