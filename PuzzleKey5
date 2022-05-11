@@ -108,7 +108,12 @@ for trial in range(4):
             #if pk.contains(movingPiece):
                     pk.fillColor = t.fillColor
                     t.pos = pk.pos
+                if  mouse.isPressedIn(t): # If the shape is clicked AND it's not moving
+                    picked.append(piece) # define it as a picked. So now piece is picked
+                    movingPiece = movePicked(picked, mouse, movingPiece)
+                    pk.fillColor = '#FFFFFF'
                     pk.draw()
+                    t.draw()
         for p in pieces:
             p.draw() #keep drawing the shape in their new p
         referent1.draw()
