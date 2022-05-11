@@ -45,7 +45,6 @@ for i in range(len(correct_color_order)):
 for t in tiles:
     t.draw()
 
-
 init_colors = ["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"]
 
 puzzlekey = []
