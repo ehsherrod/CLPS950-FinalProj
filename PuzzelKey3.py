@@ -47,7 +47,7 @@ for t in tiles:
 
 puzzlekey = []
 for i in range(5):
-    newkey = visual.Rect(win,units='pix',pos=((-280+(i*140)),0),lineWidth=1, lineColor="#000000",fillColor="#FFFFFF", width=140,height=90,fillColorSpace='hex')
+    newkey = visual.Rect(win,units='pix',pos=((-280+(i*140)),0),lineWidth=1, lineColor="#000000", width=140,height=90,fillColorSpace='hex')
     puzzlekey.append(newkey)
 for pk in puzzlekey:
     pk.draw()
