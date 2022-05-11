@@ -79,25 +79,48 @@ while not clicked_check:
         pk.draw()
     for p in pieces:
         p.draw() #keep drawing the shape in their new position shape.
+    #for xy in pk.pos: #
+    #    if pk.contains(movingPiece.pos):
+    #        pk.pos == movingPiece.position
+    for pk in puzzlekey:
+        for t in tiles:
+            center = pk.pos
+        #if pk.contains(movingPiece())
+            if t.contains(center):
+        #if movingPiece.contains(center):
+        #if pk.contains(movingPiece):
+                pk.fillColor = t.fillColor
+                t.pos = pk.pos
+                pk.draw()
+    for p in pieces:
+        p.draw() #keep drawing the shape in their new p
     referent1.draw()
     referent2.draw()
     check_button.draw()
     check_buttontext.draw()
+    #pk.draw()
 
 win.flip()
 
 total_correct = 0
 for i in range(len(puzzlekey)):
+    print(i)
     puzzletile = puzzlekey[i]
+    print(puzzletile)
     correct_color = correct_color_order[i]
+    print(correct_color)
     is_correct = puzzletile.fillColor == correct_color
+    print(is_correct)
     if is_correct:
+        print('yay!')
         total_correct += 1
 
 
-result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!')
+result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!', font='Times', units='pix', pos=(0,-100),height=65, color="#000000")
 result.draw()
 win.flip()
-event.waitKeys(maxWait=3, keyList=['space'], clearEvents=True,)
+event.waitKeys( keyList=['space'], clearEvents=True,)
+
+
 
 core.quit()
