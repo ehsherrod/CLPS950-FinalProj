@@ -124,7 +124,7 @@ for trial in range(4):
             print('yay!')
             total_correct += 1
 
-    result = visual.TextStim(win,text='you got '+str(total_correct)+' correct!', font='Times', units='pix', pos=(0,-100),height=65, color="#000000")
+    result = visual.TextStim(win,text='you got '+str(total_correct)+'/5 tiles correct!', font='Times', units='pix', pos=(0,-100),height=65, color="#000000")
     result.draw()
     win.flip()
     event.waitKeys( keyList=['space'], clearEvents=True,)
