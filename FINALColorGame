@@ -35,8 +35,8 @@ event.waitKeys(maxWait=10, keyList=['space'], clearEvents=True,)
 win.flip()
 
 # Instructions screen display
-Instr_title = visual.TextStim(win, text='HUE: Color Sorting Game', font='Times', units='pix', pos=(0,150), height=65, color="#000000")
-Instr_text = visual.TextStim(win, text="For each trial, sort the colors according to their hues, using the reference blocks provided.", font='Times', units='pix', pos=(0,-50), height=35, color="#000000")
+Instr_title = visual.TextStim(win, text='HUE: Color Sorting Game', font='Times', units='pix', pos=(0,100), height=65, color="#000000")
+Instr_text = visual.TextStim(win, text="For each trial, sort the colors according to their hues, using the reference blocks provided.", font='Times', units='pix', pos=(0,-100), height=35, color="#000000")
 sub_Instrtxt = visual.TextStim(win, text='press space bar to continue', font='Times', units='pix', pos=(0,-165), height=30, color="#000000")
 Instr_title.draw()
 Instr_text.draw()
