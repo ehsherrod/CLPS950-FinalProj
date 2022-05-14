@@ -127,6 +127,9 @@ for trial in range(4):
         referent2.draw()
         check_button.draw()
         check_buttontext.draw()
+        if sum(mouse.getPressed())==0:
+            picked = []
+            movingPiece = None
         #pk.draw()
     win.flip()
 
